@@ -907,7 +907,7 @@
   }
  ];
 
-   function sendMessage() {
+    function sendMessage() {
   const inputField = document.getElementById("input");
   const userMessage = inputField.value.trim();
   if (!userMessage) return;
@@ -918,7 +918,6 @@
   displayMessage(botResponse, "bot");
 
   inputField.value = "";
-  saveChatToLocalStorage();
 }
 
 function displayMessage(message, sender) {
@@ -945,32 +944,15 @@ function getBotResponse(message) {
 function clearChat() {
   document.getElementById("chatbox").innerHTML = "";
   document.getElementById("input").value = "";
-  localStorage.removeItem("chatHistory");
 }
 
-// ✅ Save current chat to localStorage
-function saveChatToLocalStorage() {
-  const chatbox = document.getElementById("chatbox");
-  localStorage.setItem("chatHistory", chatbox.innerHTML);
-}
 
-// ✅ Load chat history from localStorage when page loads
-window.addEventListener("load", function () {
-  const chatbox = document.getElementById("chatbox");
-  const savedChat = localStorage.getItem("chatHistory");
-  if (savedChat) {
-    chatbox.innerHTML = savedChat;
-    chatbox.scrollTop = chatbox.scrollHeight;
-  }
-});
-
-// ✅ Enable sending message on Enter key
 document.getElementById("input").addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    event.preventDefault();
+    event.preventDefault(); 
     sendMessage();
   }
-});
+  });
 
   </script>
 </body>
